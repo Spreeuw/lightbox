@@ -205,6 +205,9 @@ add_action('wp_ajax_lightbox_description', 'get_images_url');
 add_action('wp_ajax_nopriv_lightbox_description', 'get_images_url');
 
 function get_images_url(){
+	if ( empty( $_POST['urls'] ) ) {
+		return;
+	}
 	global $wpdb;
 	$image_urls = $_POST['urls'];
 	$all_urls = array();
